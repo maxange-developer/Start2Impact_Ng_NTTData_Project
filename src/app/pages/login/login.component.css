@@ -1,0 +1,612 @@
+/* ===========================================
+   MAIN LOGIN CONTAINER
+   =========================================== */
+/* Main container with full viewport height and gradient background */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 50%, #15803d 100%);
+  position: relative;
+  overflow: hidden;
+  padding: 2rem 1rem;
+}
+
+/* ===========================================
+   BACKGROUND DECORATION ELEMENTS
+   =========================================== */
+/* Container for animated background decorations */
+.background-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Base style for floating decoration circles */
+.decoration-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Individual decoration circle positioning */
+.circle-1 {
+  width: 200px;
+  height: 200px;
+  top: 10%;
+  left: -5%;
+  animation-delay: 0s;
+}
+
+.circle-2 {
+  width: 150px;
+  height: 150px;
+  top: 60%;
+  right: -10%;
+  animation-delay: 2s;
+}
+
+.circle-3 {
+  width: 100px;
+  height: 100px;
+  top: 20%;
+  right: 15%;
+  animation-delay: 4s;
+}
+
+/* Floating animation for decoration circles */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+    opacity: 1;
+  }
+}
+
+/* ===========================================
+   LOGIN CARD CONTAINER
+   =========================================== */
+/* Main login card with shadow and rounded corners */
+.login-card {
+  width: 100%;
+  max-width: 450px;
+  position: relative;
+  z-index: 2;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  animation: slideUp 0.6s ease-out;
+}
+
+/* Slide up entrance animation for login card */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===========================================
+   HERO SECTION STYLING
+   =========================================== */
+/* Header section with app branding and gradient background */
+.login-hero {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  color: white;
+  padding: 3rem 2rem 2rem;
+  text-align: center;
+  position: relative;
+}
+
+/* Curved bottom border for hero section */
+.login-hero::before {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: white;
+  border-radius: 40px 40px 0 0;
+}
+
+/* App logo container with icon and title */
+.app-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Styled icon container with glassmorphism effect */
+.app-logo-icon {
+  font-size: 2.5rem;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 1rem;
+  border-radius: 50%;
+  backdrop-filter: blur(10px);
+}
+
+/* Main application title styling */
+.app-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Login section title */
+.login-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Descriptive subtitle for login section */
+.login-subtitle {
+  font-size: 0.8rem;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===========================================
+   FORM SECTION STYLING
+   =========================================== */
+/* Container for login form elements */
+.login-form-section {
+  padding: 3rem 2rem 2rem;
+}
+
+/* Individual form field grouping */
+.form-group {
+  margin-bottom: 2rem;
+}
+
+/* Form label styling with icon support */
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+}
+
+/* Icon styling within form labels */
+.form-label i {
+  color: var(--primary-color);
+  font-size: 1rem;
+}
+
+/* Input field wrapper for icon positioning */
+.input-wrapper {
+  position: relative;
+  margin-bottom: 0.75rem;
+}
+
+/* Styled form input with icon space and focus states */
+.form-input {
+  width: 100%;
+  padding: 1rem 1rem 1rem 3rem !important;
+  border: 2px solid #e5e7eb !important;
+  border-radius: 12px !important;
+  font-size: 1rem !important;
+  transition: all 0.3s ease !important;
+  background: #f9fafb !important;
+}
+
+/* Focus state for form inputs */
+.form-input:focus {
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1) !important;
+  background: white !important;
+  outline: none !important;
+}
+
+/* Icon positioning within input fields */
+.input-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+/* Icon color change on input focus */
+.form-input:focus ~ .input-icon {
+  color: var(--primary-color);
+}
+
+/* Help text container with icon */
+.form-help {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* Descriptive help text styling */
+.help-text {
+  color: #6b7280;
+}
+
+/* Interactive help link styling */
+.help-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: all 0.3s ease;
+}
+
+/* Hover state for help links */
+.help-link:hover {
+  color: #16a34a;
+  text-decoration: underline;
+}
+
+/* Primary login button styling */
+.login-btn {
+  width: 100%;
+  padding: 1rem !important;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    #16a34a 100%
+  ) !important;
+  border: none !important;
+  border-radius: 12px !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover effects for login button */
+.login-btn:not(:disabled):hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3) !important;
+}
+
+/* Disabled state for login button */
+.login-btn:disabled {
+  opacity: 0.6 !important;
+  cursor: not-allowed !important;
+  background: #9ca3af !important;
+}
+
+/* ===========================================
+   FEATURES PREVIEW SECTION
+   =========================================== */
+/* Container for feature highlights */
+.features-preview {
+  padding: 1.5rem 2rem 2rem;
+  background: #f9fafb;
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+/* Individual feature item layout */
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+  flex: 1;
+}
+
+/* Feature icon styling with background */
+.feature-icon {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  background: white;
+  padding: 0.75rem;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Feature description text */
+.feature-item span {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+/* ===========================================
+   USER DATA DIALOG STYLING
+   =========================================== */
+/* Main dialog container styling */
+::ng-deep .user-data-dialog {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+}
+
+/* Dialog header with gradient background */
+::ng-deep .user-data-dialog .p-dialog-header {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    #16a34a 100%
+  ) !important;
+  color: white !important;
+  padding: 1.5rem 2rem !important;
+  border-bottom: none !important;
+}
+
+/* Dialog title styling */
+::ng-deep .user-data-dialog .p-dialog-header .p-dialog-title {
+  font-weight: 600 !important;
+  font-size: 1.25rem !important;
+}
+
+/* Dialog content container */
+::ng-deep .user-data-dialog .p-dialog-content {
+  padding: 0 !important;
+  background: white !important;
+}
+
+/* ===========================================
+   USER FORM CONTENT
+   =========================================== */
+/* Dialog content padding */
+.dialog-content {
+  padding: 2rem;
+}
+
+/* Header information section in dialog */
+.dialog-header-info {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Large icon for dialog header */
+.dialog-icon {
+  font-size: 3rem;
+  color: var(--primary-color);
+  background: rgba(34, 197, 94, 0.1);
+  padding: 1rem;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+/* Dialog description text */
+.dialog-description {
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* User data form container */
+.user-form {
+  width: 100%;
+}
+
+/* Grid layout for form fields */
+.form-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Individual form field container */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Form field label styling */
+.field-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: var(--text-color);
+  font-size: 0.95rem;
+}
+
+/* Icon styling in field labels */
+.field-label i {
+  color: var(--primary-color);
+  font-size: 1rem;
+}
+
+/* Dropdown field container */
+::ng-deep .form-dropdown {
+  width: 100% !important;
+}
+
+/* Dropdown styling */
+::ng-deep .form-dropdown .p-dropdown {
+  width: 100% !important;
+  border: 2px solid #e5e7eb !important;
+  border-radius: 12px !important;
+  background: #f9fafb !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Dropdown hover state */
+::ng-deep .form-dropdown .p-dropdown:not(.p-disabled):hover {
+  border-color: var(--primary-color) !important;
+}
+
+/* Dropdown focus state */
+::ng-deep .form-dropdown .p-dropdown.p-focus {
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1) !important;
+  background: white !important;
+}
+
+/* Dropdown label padding */
+::ng-deep .form-dropdown .p-dropdown-label {
+  padding: 1rem !important;
+  font-size: 1rem !important;
+}
+
+/* Form actions container */
+.form-actions {
+  display: flex;
+  justify-content: center;
+}
+
+/* Submit button styling */
+.submit-btn {
+  width: 100%;
+  padding: 1rem !important;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    #16a34a 100%
+  ) !important;
+  border: none !important;
+  border-radius: 12px !important;
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Submit button hover effects */
+.submit-btn:not(:disabled):hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3) !important;
+}
+
+/* Submit button disabled state */
+.submit-btn:disabled {
+  opacity: 0.6 !important;
+  background: #9ca3af !important;
+}
+
+/* ===========================================
+   RESPONSIVE DESIGN - TABLET AND MOBILE
+   =========================================== */
+/* Tablet and small desktop adjustments */
+@media (max-width: 768px) {
+  .login-container {
+    padding: 1rem;
+  }
+
+  .login-card {
+    max-width: 100%;
+  }
+
+  .login-hero {
+    padding: 2rem 1.5rem 1.5rem;
+  }
+
+  .app-logo {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .app-title {
+    font-size: 2.25rem;
+  }
+
+  .login-title {
+    font-size: 1.5rem;
+  }
+
+  .login-form-section {
+    padding: 2rem 1.5rem 1.5rem;
+  }
+
+  .features-preview {
+    padding: 1rem 1.5rem 1.5rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .feature-item {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .dialog-content {
+    padding: 1.5rem;
+  }
+}
+
+/* Mobile phone adjustments */
+@media (max-width: 480px) {
+  .login-hero {
+    padding: 1.5rem 1rem 1rem;
+  }
+
+  .app-title {
+    font-size: 2rem;
+  }
+
+  .login-title {
+    font-size: 1rem;
+  }
+
+  .login-form-section {
+    padding: 1.5rem 1rem 1rem;
+  }
+
+  .features-preview {
+    padding: 1rem;
+  }
+
+  .circle-1,
+  .circle-2,
+  .circle-3 {
+    display: none;
+  }
+}
+
+/* ===========================================
+   ACCESSIBILITY AND MOTION PREFERENCES
+   =========================================== */
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .decoration-circle,
+  .login-card,
+  .login-btn:not(:disabled):hover,
+  .submit-btn:not(:disabled):hover {
+    animation: none;
+    transform: none;
+  }
+}
+
+/* Enhanced focus styles for accessibility */
+.form-input:focus,
+::ng-deep .form-dropdown .p-dropdown.p-focus,
+.login-btn:focus,
+.submit-btn:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}

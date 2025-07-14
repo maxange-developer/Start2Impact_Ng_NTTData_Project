@@ -1,0 +1,288 @@
+<div class="user-detail-container">
+  <!-- Loading State -->
+  <div class="loading-state" *ngIf="loading">
+    <div class="loading-content">
+      <i class="pi pi-spin pi-spinner loading-spinner"></i>
+      <p class="loading-text">Loading user details...</p>
+    </div>
+  </div>
+
+  <!-- User Detail Content -->
+  <div class="user-detail-content" *ngIf="!loading && user">
+    <!-- Header with Back Button -->
+    <div class="detail-header">
+      <button
+        pButton
+        pRipple
+        icon="pi pi-arrow-left"
+        class="p-button-outlined back-btn"
+        pTooltip="Torna indietro"
+        tooltipPosition="right"
+        (click)="goBack()"
+      ></button>
+    </div>
+
+    <!-- User Information Card -->
+    <div class="user-info-card professional-card">
+      <div class="user-info-header">
+        <div class="user-avatar-section">
+          <p-avatar
+            [label]="getInitials(user.name)"
+            size="xlarge"
+            styleClass="user-avatar-large"
+            [style]="{ 'background-color': getAvatarColor(user.id) }"
+          ></p-avatar>
+          <div class="user-status-badge">
+            <span
+              class="status-badge"
+              [ngClass]="{
+                active: user.status === 'active',
+                inactive: user.status === 'inactive'
+              }"
+            >
+              {{ user.status | titlecase }}
+            </span>
+          </div>
+        </div>
+
+        <div class="user-basic-info">
+          <h2 class="user-name">{{ user.name }}</h2>
+          <div class="user-details">
+            <div class="detail-item">
+              <i class="pi pi-envelope detail-icon"></i>
+              <span class="detail-label">Email:</span>
+              <span class="detail-value">{{ user.email }}</span>
+            </div>
+            <div class="detail-item">
+              <i class="pi pi-user detail-icon"></i>
+              <span class="detail-label">Gender:</span>
+              <span class="detail-value">{{ user.gender | titlecase }}</span>
+            </div>
+            <div class="detail-item">
+              <i class="pi pi-id-card detail-icon"></i>
+              <span class="detail-label">User ID:</span>
+              <span class="detail-value">#{{ user.id }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Statistics -->
+      <div class="user-stats">
+        <div class="stat-item">
+          <div class="stat-value">{{ stats.totalPosts }}</div>
+          <div class="stat-label">Posts</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">{{ stats.totalComments }}</div>
+          <div class="stat-label">Comments</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">{{ stats.averageCommentsPerPost }}</div>
+          <div class="stat-label">Avg Comments/Post</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Posts Section -->
+    <div class="posts-section">
+      <div class="section-header">
+        <h3 class="section-title">
+          <i class="pi pi-file-edit"></i>
+          User Posts ({{ posts.length }})
+        </h3>
+      </div>
+
+      <!-- Posts Loading -->
+      <div class="posts-loading" *ngIf="postsLoading">
+        <i class="pi pi-spin pi-spinner"></i>
+        <span>Loading posts...</span>
+      </div>
+
+      <!-- Posts List -->
+      <div class="posts-list" *ngIf="!postsLoading">
+        <!-- Empty State -->
+        <div class="empty-posts" *ngIf="posts.length === 0">
+          <i class="pi pi-file empty-icon"></i>
+          <h4>No Posts Found</h4>
+          <p>This user hasn't created any posts yet.</p>
+        </div>
+
+        <!-- Posts -->
+        <div class="post-card professional-card" *ngFor="let post of posts">
+          <!-- Post Header -->
+          <div class="post-header">
+            <div class="post-meta">
+              <h4 class="post-title">{{ post.title }}</h4>
+              <div class="post-info">
+                <span class="post-date">
+                  <i class="pi pi-calendar"></i>
+                  {{ formatDate(post.id) }}
+                </span>
+                <span class="post-id">
+                  <i class="pi pi-hashtag"></i>
+                  {{ post.id }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Post Content -->
+          <div class="post-content">
+            <p class="post-body">{{ post.body }}</p>
+          </div>
+
+          <!-- Post Actions -->
+          <div class="post-actions">
+            <button
+              pButton
+              pRipple
+              [label]="'Comments (' + post.comments.length + ')'"
+              icon="pi pi-comments"
+              class="p-button-outlined comments-btn"
+              [class.active]="post.showComments"
+              (click)="toggleComments(post)"
+            ></button>
+
+            <button
+              pButton
+              pRipple
+              label="Add Comment"
+              icon="pi pi-plus"
+              class="p-button-outlined add-comment-btn"
+              (click)="toggleCommentForm(post)"
+            ></button>
+          </div>
+
+          <!-- Comments Section -->
+          <div class="comments-section" *ngIf="post.showComments">
+            <!-- Comments Loading -->
+            <div class="comments-loading" *ngIf="post.commentsLoading">
+              <i class="pi pi-spin pi-spinner"></i>
+              <span>Loading comments...</span>
+            </div>
+
+            <!-- Comments List -->
+            <div class="comments-list" *ngIf="!post.commentsLoading">
+              <!-- Empty Comments -->
+              <div class="empty-comments" *ngIf="post.comments.length === 0">
+                <i class="pi pi-comment"></i>
+                <span>No comments yet. Be the first to comment!</span>
+              </div>
+
+              <!-- Comments -->
+              <div class="comment-item" *ngFor="let comment of post.comments">
+                <div class="comment-header">
+                  <div class="comment-author">
+                    <p-avatar
+                      [label]="getInitials(comment.name)"
+                      size="normal"
+                      [style]="{
+                        'background-color': getAvatarColor(comment.id)
+                      }"
+                    ></p-avatar>
+                    <div class="author-info">
+                      <span class="author-name">{{ comment.name }}</span>
+                      <span class="author-email">{{ comment.email }}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="comment-body">
+                  <p>{{ comment.body }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Comment Form -->
+          <div class="comment-form-section" *ngIf="post.showCommentForm">
+            <div class="comment-form professional-card">
+              <h5 class="form-title">
+                <i class="pi pi-plus-circle"></i>
+                Add New Comment
+              </h5>
+
+              <form #commentForm="ngForm" (ngSubmit)="submitComment(post)">
+                <div class="form-grid">
+                  <div class="form-field">
+                    <label for="name" class="field-label">
+                      <i class="pi pi-user"></i>
+                      Name *
+                    </label>
+                    <input
+                      id="name"
+                      pInputText
+                      [(ngModel)]="post.newComment.name"
+                      name="name"
+                      required
+                      placeholder="Your name"
+                      class="form-input"
+                    />
+                  </div>
+
+                  <div class="form-field">
+                    <label for="email" class="field-label">
+                      <i class="pi pi-envelope"></i>
+                      Email *
+                    </label>
+                    <input
+                      id="email"
+                      pInputText
+                      type="email"
+                      [(ngModel)]="post.newComment.email"
+                      name="email"
+                      required
+                      placeholder="Your email"
+                      class="form-input"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-field">
+                  <label for="comment" class="field-label">
+                    <i class="pi pi-comment"></i>
+                    Comment *
+                  </label>
+                  <textarea
+                    id="comment"
+                    pInputTextarea
+                    [(ngModel)]="post.newComment.body"
+                    name="comment"
+                    required
+                    placeholder="Write your comment here..."
+                    rows="4"
+                    class="form-textarea"
+                  ></textarea>
+                </div>
+
+                <div class="form-actions">
+                  <button
+                    pButton
+                    pRipple
+                    type="button"
+                    label="Cancel"
+                    icon="pi pi-times"
+                    class="p-button-outlined cancel-btn"
+                    (click)="cancelComment(post)"
+                  ></button>
+                  <button
+                    pButton
+                    pRipple
+                    type="submit"
+                    label="Post Comment"
+                    icon="pi pi-send"
+                    class="submit-btn"
+                    [disabled]="commentForm.invalid"
+                  ></button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast Messages -->
+<p-toast position="top-right"></p-toast>

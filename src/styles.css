@@ -1,1 +1,323 @@
-/* You can add global styles to this file, and also import other style files */
+/* ===========================================
+   IMPORT DEPENDENCIES
+   =========================================== */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+@import "primeicons/primeicons.css";
+
+/* ===========================================
+   CSS VARIABLES
+   =========================================== */
+:root {
+  --primary-color: #22c55e;
+  --primary-color-dark: #16a34a;
+  --secondary-color: #f8fafc;
+  --text-color: #374151;
+  --text-color-light: #6b7280;
+  --border-color: #e5e7eb;
+  --shadow-light: 0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-large: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* ===========================================
+   GLOBAL STYLES
+   =========================================== */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+  background-color: #f9fafb;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* ===========================================
+   TYPOGRAPHY
+   =========================================== */
+.app-title {
+  font-family: "Poppins", sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+}
+
+/* ===========================================
+   LAYOUT COMPONENTS
+   =========================================== */
+.professional-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: var(--shadow-medium);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.professional-card:hover {
+  box-shadow: var(--shadow-large);
+  transform: translateY(-2px);
+}
+
+.responsive-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+}
+
+.container-responsive {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.full-height-container {
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.scrollable-content {
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* ===========================================
+   BUTTON STYLES
+   =========================================== */
+.btn-primary {
+  background: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  transition: all 0.3s ease !important;
+}
+
+.btn-primary:hover {
+  background: var(--primary-color-dark) !important;
+  border-color: var(--primary-color-dark) !important;
+  transform: translateY(-1px);
+}
+
+/* ===========================================
+   TOOLTIP STYLES - BASE
+   =========================================== */
+.p-tooltip,
+.p-tooltip.p-tooltip-active,
+.p-tooltip[data-pc-section="root"],
+.p-tooltip.p-component,
+html body .p-tooltip,
+html body .p-tooltip.p-tooltip-active,
+html body .p-tooltip[data-pc-section="root"],
+html body .p-tooltip.p-component,
+[data-pc-name="tooltip"],
+[data-pc-name="tooltip"].p-component,
+[data-pc-name="tooltip"][data-pc-section="root"],
+[class*="p-tooltip"] {
+  position: absolute !important;
+  max-width: 12.5rem !important;
+  z-index: 9999 !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  pointer-events: none !important;
+}
+
+.p-tooltip .p-tooltip-text,
+html body .p-tooltip .p-tooltip-text,
+.p-tooltip[data-pc-section="root"] .p-tooltip-text,
+html body .p-tooltip[data-pc-section="root"] .p-tooltip-text,
+[class*="p-tooltip"] .p-tooltip-text {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  white-space: pre-line !important;
+  word-break: break-word !important;
+  background: rgba(97, 97, 97, 0.9) !important;
+  color: white !important;
+  padding: 0.5rem 0.75rem !important;
+  border-radius: 6px !important;
+  font-size: 0.75rem !important;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1) !important;
+  border: none !important;
+}
+
+/* ===========================================
+   TOOLTIP STYLES - THEMED VARIANTS
+   =========================================== */
+
+/* View Tooltip */
+.p-tooltip.view-tooltip .p-tooltip-text,
+html body .p-tooltip.view-tooltip .p-tooltip-text,
+body .p-tooltip.view-tooltip .p-tooltip-text,
+.p-tooltip[data-pc-section="root"].view-tooltip .p-tooltip-text {
+  background: #3b82f6 !important;
+  color: white !important;
+}
+
+.p-tooltip.view-tooltip .p-tooltip-arrow,
+html body .p-tooltip.view-tooltip .p-tooltip-arrow,
+body .p-tooltip.view-tooltip .p-tooltip-arrow {
+  border-top-color: #3b82f6 !important;
+  border-bottom-color: #3b82f6 !important;
+  border-left-color: #3b82f6 !important;
+  border-right-color: #3b82f6 !important;
+}
+
+/* Edit Tooltip */
+.p-tooltip.edit-tooltip .p-tooltip-text,
+html body .p-tooltip.edit-tooltip .p-tooltip-text,
+body .p-tooltip.edit-tooltip .p-tooltip-text,
+.p-tooltip[data-pc-section="root"].edit-tooltip .p-tooltip-text {
+  background: #10b981 !important;
+  color: white !important;
+}
+
+.p-tooltip.edit-tooltip .p-tooltip-arrow,
+html body .p-tooltip.edit-tooltip .p-tooltip-arrow,
+body .p-tooltip.edit-tooltip .p-tooltip-arrow {
+  border-top-color: #10b981 !important;
+  border-bottom-color: #10b981 !important;
+  border-left-color: #10b981 !important;
+  border-right-color: #10b981 !important;
+}
+
+/* Edit Post Tooltip */
+.p-tooltip.edit-post-tooltip .p-tooltip-text,
+html body .p-tooltip.edit-post-tooltip .p-tooltip-text,
+body .p-tooltip.edit-post-tooltip .p-tooltip-text,
+.p-tooltip[data-pc-section="root"].edit-post-tooltip .p-tooltip-text {
+  background: #f59e0b !important;
+  color: white !important;
+}
+
+.p-tooltip.edit-post-tooltip .p-tooltip-arrow,
+html body .p-tooltip.edit-post-tooltip .p-tooltip-arrow,
+body .p-tooltip.edit-post-tooltip .p-tooltip-arrow {
+  border-top-color: #f59e0b !important;
+  border-bottom-color: #f59e0b !important;
+  border-left-color: #f59e0b !important;
+  border-right-color: #f59e0b !important;
+}
+
+/* Delete Tooltip */
+.p-tooltip.delete-tooltip .p-tooltip-text,
+html body .p-tooltip.delete-tooltip .p-tooltip-text,
+body .p-tooltip.delete-tooltip .p-tooltip-text,
+.p-tooltip[data-pc-section="root"].delete-tooltip .p-tooltip-text {
+  background: #ef4444 !important;
+  color: white !important;
+}
+
+.p-tooltip.delete-tooltip .p-tooltip-arrow,
+html body .p-tooltip.delete-tooltip .p-tooltip-arrow,
+body .p-tooltip.delete-tooltip .p-tooltip-arrow {
+  border-top-color: #ef4444 !important;
+  border-bottom-color: #ef4444 !important;
+  border-left-color: #ef4444 !important;
+  border-right-color: #ef4444 !important;
+}
+
+/* Add Tooltip */
+.p-tooltip.add-tooltip .p-tooltip-text,
+html body .p-tooltip.add-tooltip .p-tooltip-text,
+body .p-tooltip.add-tooltip .p-tooltip-text,
+.p-tooltip[data-pc-section="root"].add-tooltip .p-tooltip-text {
+  background: var(--primary-color, #22c55e) !important;
+  color: white !important;
+}
+
+.p-tooltip.add-tooltip .p-tooltip-arrow,
+html body .p-tooltip.add-tooltip .p-tooltip-arrow,
+body .p-tooltip.add-tooltip .p-tooltip-arrow {
+  border-top-color: var(--primary-color, #22c55e) !important;
+  border-bottom-color: var(--primary-color, #22c55e) !important;
+  border-left-color: var(--primary-color, #22c55e) !important;
+  border-right-color: var(--primary-color, #22c55e) !important;
+}
+
+/* Refresh Tooltip */
+.p-tooltip.refresh-tooltip .p-tooltip-text,
+html body .p-tooltip.refresh-tooltip .p-tooltip-text,
+body .p-tooltip.refresh-tooltip .p-tooltip-text,
+.p-tooltip[data-pc-section="root"].refresh-tooltip .p-tooltip-text {
+  background: var(--primary-color, #22c55e) !important;
+  color: white !important;
+}
+
+.p-tooltip.refresh-tooltip .p-tooltip-arrow,
+html body .p-tooltip.refresh-tooltip .p-tooltip-arrow,
+body .p-tooltip.refresh-tooltip .p-tooltip-arrow {
+  border-top-color: var(--primary-color, #22c55e) !important;
+  border-bottom-color: var(--primary-color, #22c55e) !important;
+  border-left-color: var(--primary-color, #22c55e) !important;
+  border-right-color: var(--primary-color, #22c55e) !important;
+}
+
+/* Refresh Post Tooltip */
+.p-tooltip.refresh-post-tooltip .p-tooltip-text,
+html body .p-tooltip.refresh-post-tooltip .p-tooltip-text,
+body .p-tooltip.refresh-post-tooltip .p-tooltip-text,
+.p-tooltip[data-pc-section="root"].refresh-post-tooltip .p-tooltip-text {
+  background: var(--primary-color, #22c55e) !important;
+  color: white !important;
+}
+
+.p-tooltip.refresh-post-tooltip .p-tooltip-arrow,
+html body .p-tooltip.refresh-post-tooltip .p-tooltip-arrow,
+body .p-tooltip.refresh-post-tooltip .p-tooltip-arrow {
+  border-top-color: var(--primary-color, #22c55e) !important;
+  border-bottom-color: var(--primary-color, #22c55e) !important;
+  border-left-color: var(--primary-color, #22c55e) !important;
+  border-right-color: var(--primary-color, #22c55e) !important;
+}
+
+/* Refresh User Tooltip */
+.p-tooltip.refresh-user-tooltip .p-tooltip-text,
+html body .p-tooltip.refresh-user-tooltip .p-tooltip-text,
+body .p-tooltip.refresh-user-tooltip .p-tooltip-text,
+.p-tooltip[data-pc-section="root"].refresh-user-tooltip .p-tooltip-text {
+  background: #3b82f6 !important;
+  color: white !important;
+}
+
+.p-tooltip.refresh-user-tooltip .p-tooltip-arrow,
+html body .p-tooltip.refresh-user-tooltip .p-tooltip-arrow,
+body .p-tooltip.refresh-user-tooltip .p-tooltip-arrow {
+  border-top-color: #3b82f6 !important;
+  border-bottom-color: #3b82f6 !important;
+  border-left-color: #3b82f6 !important;
+  border-right-color: #3b82f6 !important;
+}
+
+/* ===========================================
+   RESPONSIVE DESIGN
+   =========================================== */
+@media (max-width: 768px) {
+  .responsive-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 640px) {
+  .container-responsive {
+    padding: 0 2rem;
+  }
+}

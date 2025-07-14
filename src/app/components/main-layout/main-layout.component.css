@@ -1,0 +1,395 @@
+/* ===========================================
+   MAIN LAYOUT CONTAINER
+   =========================================== */
+/* Main layout container with full viewport height and flex column layout */
+.main-layout {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f9fafb;
+  overflow: hidden;
+}
+
+/* ===========================================
+   APPLICATION HEADER
+   =========================================== */
+/* Header with gradient background and sticky positioning */
+.app-header {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--primary-color-dark) 100%
+  );
+  color: white;
+  box-shadow: var(--shadow-medium);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  flex-shrink: 0;
+}
+
+/* Header content container with responsive layout */
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 80px;
+  gap: 2rem;
+}
+
+/* ===========================================
+   LOGO AND BRANDING SECTION
+   =========================================== */
+/* Logo section with fixed width to prevent shrinking */
+.logo-section {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* Application title with icon support and responsive typography */
+.app-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+}
+
+/* Icon styling within application title */
+.app-title i {
+  font-size: 1.75rem;
+}
+
+/* ===========================================
+   NAVIGATION SECTION
+   =========================================== */
+/* Navigation container with centered layout */
+.header-navigation {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  max-width: 500px;
+}
+
+/* Container for navigation buttons */
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Base styling for navigation buttons with glassmorphism effect */
+.nav-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  min-width: 120px;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+/* Navigation button hover effects */
+.nav-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+  color: white;
+}
+
+/* Active navigation button styling */
+.nav-button-active {
+  background: white !important;
+  color: var(--primary-color) !important;
+  border-color: white !important;
+  font-weight: 600 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Active navigation button hover state */
+.nav-button-active:hover {
+  background: white !important;
+  color: var(--primary-color) !important;
+}
+
+/* Icon styling within navigation buttons */
+.nav-button-icon {
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+}
+
+/* Label styling within navigation buttons */
+.nav-button-label {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+/* Icon animation on navigation button hover */
+.nav-button:hover .nav-button-icon {
+  transform: scale(1.1);
+}
+
+/* Icon animation for active navigation button */
+.nav-button-active .nav-button-icon {
+  transform: scale(1.05);
+}
+
+/* ===========================================
+   USER SECTION
+   =========================================== */
+/* User section container with fixed width */
+.user-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+/* Welcome text that appears on larger screens */
+.welcome-text {
+  font-weight: 500;
+  display: none;
+}
+
+/* Custom styling for logout button using deep selector */
+::ng-deep .logout-button {
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  color: white !important;
+  background: transparent !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Logout button hover effects */
+::ng-deep .logout-button:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.6) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Logout button focus state for accessibility */
+::ng-deep .logout-button:focus {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Reset PrimeNG button styling for logout button */
+::ng-deep .logout-button.p-button {
+  background: transparent !important;
+}
+
+/* PrimeNG button hover state override */
+::ng-deep .logout-button.p-button:not(:disabled):hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ===========================================
+   MAIN CONTENT AREA
+   =========================================== */
+/* Main content wrapper that expands to fill remaining space */
+.app-main {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Content area with scroll management and responsive constraints */
+.main-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  width: 100%;
+}
+
+/* ===========================================
+   RESPONSIVE DESIGN - LARGE SCREENS
+   =========================================== */
+/* Large desktop optimizations (1200px and below) */
+@media (max-width: 1200px) {
+  /* Full width header on large screens */
+  .header-content {
+    max-width: 100%;
+    padding: 1rem 1.5rem;
+  }
+
+  /* Compact navigation buttons for large screens */
+  .nav-button {
+    padding: 0.65rem 1rem;
+    font-size: 0.85rem;
+    min-width: 100px;
+  }
+}
+
+/* ===========================================
+   RESPONSIVE DESIGN - TABLET LANDSCAPE
+   =========================================== */
+/* Tablet landscape optimizations (1024px and below) */
+@media (max-width: 1024px) {
+  /* Reduced header spacing for tablets */
+  .header-content {
+    gap: 1.5rem;
+  }
+
+  /* Smaller app title for tablets */
+  .app-title {
+    font-size: 1.25rem;
+  }
+
+  /* Further compact navigation buttons for tablets */
+  .nav-button {
+    padding: 0.6rem 0.85rem;
+    min-width: 90px;
+  }
+}
+
+/* Horizontal layout for tablet landscape mode */
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Maintain horizontal layout on tablet landscape */
+  .header-content {
+    flex-direction: row;
+    height: 75px;
+  }
+
+  /* Auto-sizing for navigation on tablets */
+  .header-navigation {
+    flex: 0 1 auto;
+  }
+}
+
+/* ===========================================
+   RESPONSIVE DESIGN - TABLET PORTRAIT
+   =========================================== */
+/* Tablet portrait and mobile optimizations (768px and below) */
+@media (max-width: 768px) {
+  /* Vertical header layout for tablets and mobile */
+  .header-content {
+    padding: 1rem;
+    height: auto;
+    gap: 1rem;
+    flex-direction: column;
+  }
+
+  /* Smaller app title for tablets */
+  .app-title {
+    font-size: 1.125rem;
+  }
+
+  /* Hide welcome text on smaller screens */
+  .welcome-text {
+    display: none;
+  }
+
+  /* Reorder navigation section */
+  .header-navigation {
+    order: 2;
+    max-width: none;
+    width: 100%;
+  }
+
+  /* Reorder and center user section */
+  .user-section {
+    order: 3;
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Icon-only navigation buttons for mobile */
+  .nav-button {
+    padding: 0.6rem;
+    margin: 0 0.125rem;
+    min-width: 50px;
+    border-radius: 10px;
+    gap: 0;
+    justify-content: center;
+  }
+
+  /* Hide navigation button labels on mobile */
+  .nav-button-label {
+    display: none;
+  }
+
+  /* Larger icons for mobile touch targets */
+  .nav-button-icon {
+    font-size: 1.1rem;
+  }
+
+  /* Reduced main content padding for mobile */
+  .main-content {
+    padding: 1rem;
+  }
+}
+
+/* Show welcome text on larger screens */
+@media (min-width: 769px) {
+  .welcome-text {
+    display: block;
+  }
+}
+
+/* ===========================================
+   RESPONSIVE DESIGN - MOBILE
+   =========================================== */
+/* Mobile phone optimizations (480px and below) */
+@media (max-width: 480px) {
+  /* Minimal header padding for mobile */
+  .header-content {
+    padding: 0.75rem;
+  }
+
+  /* Very compact app title for mobile */
+  .app-title {
+    font-size: 1rem;
+  }
+
+  /* Smaller app title icon for mobile */
+  .app-title i {
+    font-size: 1.25rem;
+  }
+
+  /* Minimal navigation button padding for mobile */
+  .nav-button {
+    padding: 0.5rem;
+    min-width: 45px;
+  }
+
+  /* Standard icon size for mobile */
+  .nav-button-icon {
+    font-size: 1rem;
+  }
+}
+
+/* ===========================================
+   ACCESSIBILITY AND MOTION PREFERENCES
+   =========================================== */
+/* Focus states for keyboard navigation accessibility */
+.nav-button:focus {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+/* Smooth animations for users who prefer motion */
+@media (prefers-reduced-motion: no-preference) {
+  .nav-button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}

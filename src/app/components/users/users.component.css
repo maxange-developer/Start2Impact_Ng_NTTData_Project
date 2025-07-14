@@ -1,0 +1,533 @@
+/* ===========================================
+   MAIN CONTAINER
+   =========================================== */
+/* Main users component container with full height and scroll management */
+.users-container {
+  height: 100%;
+  max-width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: 1rem;
+}
+
+/* ===========================================
+   PAGE HEADER SECTION
+   =========================================== */
+/* Header section with title and action buttons */
+.page-header {
+  margin-bottom: 2rem;
+}
+
+/* Flex container for header content with space distribution */
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+/* Container for page title and subtitle */
+.title-section {
+  flex: 1;
+}
+
+/* Main page title with icon and responsive typography */
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0 0 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Icon styling within page title */
+.page-title i {
+  color: var(--primary-color);
+  font-size: 1.75rem;
+}
+
+/* Descriptive subtitle with light text color */
+.page-subtitle {
+  font-size: 1rem;
+  color: var(--text-color-light);
+  margin: 0;
+}
+
+/* Container for header action buttons */
+.header-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Primary add button with custom styling */
+.add-btn {
+  background: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+  padding: 0.75rem 1.5rem !important;
+  font-weight: 600 !important;
+}
+
+/* Refresh button hover effect */
+.refresh-btn:hover {
+  background: #3b82f6 !important;
+  color: white !important;
+}
+
+/* ===========================================
+   FILTERS SECTION
+   =========================================== */
+/* Container for search and filter controls */
+.filters-section {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+}
+
+/* Flex layout for filter content with responsive wrapping */
+.filters-content {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Search box container with flexible width */
+.search-box {
+  flex: 1;
+  min-width: 250px;
+}
+
+/* Search input field with icon space and consistent styling */
+.search-input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.5rem !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--border-color) !important;
+  font-size: 1rem !important;
+}
+
+/* Container for dropdown filter controls */
+.filter-controls {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Minimum width for filter dropdown components */
+.filter-dropdown {
+  min-width: 160px;
+}
+
+/* ===========================================
+   USERS GRID LAYOUT
+   =========================================== */
+/* Responsive grid layout for user cards */
+.users-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Individual user card with flexible column layout */
+.user-card {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ===========================================
+   USER CARD COMPONENTS
+   =========================================== */
+/* Header section of user card with avatar and status */
+.user-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* Container for user avatar component */
+.user-avatar {
+  position: relative;
+}
+
+/* Custom styling for avatar content using deep selector */
+::ng-deep .user-avatar-content {
+  width: 3.5rem !important;
+  height: 3.5rem !important;
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  color: white !important;
+}
+
+/* Container for user status badge */
+.user-status {
+  align-self: flex-start;
+}
+
+/* Base styling for status badges */
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Active status badge with green styling */
+.status-badge.active {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+/* Inactive status badge with red styling */
+.status-badge.inactive {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+/* Container for user information details */
+.user-info {
+  flex: 1;
+}
+
+/* User name display with prominent typography */
+.user-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0 0 0.75rem 0;
+}
+
+/* Base styling for user email and gender display */
+.user-email,
+.user-gender {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-color-light);
+  margin: 0.5rem 0;
+  font-size: 0.875rem;
+}
+
+/* Icon styling within user info fields */
+.user-email i,
+.user-gender i {
+  color: var(--primary-color);
+  font-size: 0.875rem;
+}
+
+/* Container for user action buttons */
+.user-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  margin-top: auto;
+}
+
+/* ===========================================
+   ACTION BUTTON STYLING
+   =========================================== */
+/* View button with blue color scheme */
+.view-btn {
+  color: #3b82f6 !important;
+  border-color: #3b82f6 !important;
+}
+
+.view-btn:hover {
+  background: #3b82f6 !important;
+  color: white !important;
+}
+
+/* Edit button with green color scheme */
+.edit-btn {
+  color: #10b981 !important;
+  border-color: #10b981 !important;
+}
+
+.edit-btn:hover {
+  background: #10b981 !important;
+  color: white !important;
+}
+
+/* Delete button with red color scheme */
+.delete-btn {
+  color: #ef4444 !important;
+  border-color: #ef4444 !important;
+}
+
+.delete-btn:hover {
+  background: #ef4444 !important;
+  color: white !important;
+}
+
+/* ===========================================
+   EMPTY AND LOADING STATES
+   =========================================== */
+/* Empty state container when no users are found */
+.empty-state {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+/* Content wrapper for empty state elements */
+.empty-content {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Large icon for empty state visualization */
+.empty-icon {
+  font-size: 4rem;
+  color: var(--text-color-light);
+  margin-bottom: 1.5rem;
+}
+
+/* Title text for empty state */
+.empty-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0 0 0.5rem 0;
+}
+
+/* Subtitle text for empty state description */
+.empty-subtitle {
+  color: var(--text-color-light);
+  margin: 0 0 2rem 0;
+}
+
+/* Loading state container during data fetch */
+.loading-state {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+/* Flex layout for loading state elements */
+.loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Animated loading spinner icon */
+.loading-spinner {
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+/* Loading state descriptive text */
+.loading-text {
+  color: var(--text-color-light);
+  margin: 0;
+}
+
+/* ===========================================
+   PAGINATION SECTION
+   =========================================== */
+/* Container for pagination controls */
+.pagination-section {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* Custom styling for PrimeNG paginator component */
+::ng-deep .custom-paginator {
+  border: none !important;
+  background: white !important;
+  border-radius: 8px !important;
+  box-shadow: var(--shadow-light) !important;
+  padding: 1rem !important;
+}
+
+/* ===========================================
+   DIALOG STYLING
+   =========================================== */
+/* Custom styling for user dialog component */
+::ng-deep .user-dialog {
+  border-radius: 12px !important;
+}
+
+/* Dialog header with primary color background */
+::ng-deep .user-dialog .p-dialog-header {
+  background: var(--primary-color) !important;
+  color: white !important;
+  border-radius: 12px 12px 0 0 !important;
+  padding: 1.5rem !important;
+}
+
+/* Dialog content area with padding */
+::ng-deep .user-dialog .p-dialog-content {
+  padding: 2rem !important;
+}
+
+/* ===========================================
+   FORM STYLING
+   =========================================== */
+/* Main form container */
+.user-form {
+  width: 100%;
+}
+
+/* Grid layout for form fields */
+.form-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Individual form field container */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Form field label with icon support */
+.field-label {
+  font-weight: 600;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Icon styling within field labels */
+.field-label i {
+  color: var(--primary-color);
+}
+
+/* Base styling for form inputs and dropdowns */
+.form-input,
+::ng-deep .form-dropdown {
+  width: 100%;
+}
+
+/* Specific styling for text input fields */
+.form-input {
+  padding: 0.75rem !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--border-color) !important;
+  font-size: 1rem !important;
+}
+
+/* Container for form action buttons */
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+/* Cancel button with neutral styling */
+.cancel-btn {
+  color: var(--text-color-light) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Save button with primary color styling */
+.save-btn {
+  background: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+/* ===========================================
+   RESPONSIVE DESIGN - TABLET
+   =========================================== */
+/* Tablet and small desktop optimizations */
+@media (max-width: 768px) {
+  /* Stack header content vertically on tablets */
+  .header-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* Reduced page title size for tablets */
+  .page-title {
+    font-size: 1.75rem;
+  }
+
+  /* Stack filter content vertically on tablets */
+  .filters-content {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* Remove minimum width constraint for search box */
+  .search-box {
+    min-width: auto;
+  }
+
+  /* Stretch filter controls to full width */
+  .filter-controls {
+    justify-content: stretch;
+  }
+
+  /* Remove minimum width for filter dropdowns */
+  .filter-dropdown {
+    min-width: auto;
+    flex: 1;
+  }
+
+  /* Single column grid layout for tablets */
+  .users-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Reduced padding for user cards on tablets */
+  .user-card {
+    padding: 1rem;
+  }
+
+  /* Stack form actions vertically on tablets */
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+
+  /* Full width buttons in mobile form */
+  .form-actions button {
+    width: 100%;
+  }
+}
+
+/* ===========================================
+   RESPONSIVE DESIGN - MOBILE
+   =========================================== */
+/* Mobile phone specific optimizations */
+@media (max-width: 480px) {
+  /* Center-aligned page title for mobile */
+  .page-title {
+    font-size: 1.5rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+
+  /* Reduced padding for filters section on mobile */
+  .filters-section {
+    padding: 1rem;
+  }
+
+  /* Stack user header content vertically on mobile */
+  .user-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Center user actions on mobile */
+  .user-actions {
+    justify-content: center;
+  }
+
+  /* Reduced padding for empty state on mobile */
+  .empty-state {
+    padding: 2rem 1rem;
+  }
+}

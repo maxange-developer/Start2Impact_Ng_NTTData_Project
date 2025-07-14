@@ -1,0 +1,355 @@
+/* ===========================================
+   MAIN CONTAINER
+   =========================================== */
+/* Main home page container with full height and scroll management */
+.home-container {
+  height: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* ===========================================
+   HERO SECTION
+   =========================================== */
+/* Main hero section with centered content and optimized spacing */
+.hero-section {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 1rem 0;
+}
+
+/* Container for hero content with max width constraint */
+.hero-content {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Main hero title with icon and responsive text sizing */
+.hero-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Icon styling within hero title */
+.hero-title i {
+  color: var(--primary-color);
+  font-size: 2rem;
+}
+
+/* Hero subtitle with light text color and improved readability */
+.hero-subtitle {
+  font-size: 1.125rem;
+  color: var(--text-color-light);
+  margin: 0;
+  line-height: 1.7;
+}
+
+/* ===========================================
+   FEATURES SECTION
+   =========================================== */
+/* Main features section container */
+.features-section {
+  margin-bottom: 2rem;
+}
+
+/* Header styling for section titles */
+.section-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Primary section title styling */
+.section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+/* Secondary section subtitle */
+.section-subtitle {
+  font-size: 1rem;
+  color: var(--text-color-light);
+  margin: 0;
+}
+
+/* Responsive grid layout for feature cards */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Individual feature card styling with flexible height */
+.feature-card {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: 300px;
+}
+
+/* Content area within feature cards that expands to fill space */
+.feature-content {
+  flex: 1;
+}
+
+/* Feature icon container with gradient background */
+.feature-icon {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  font-size: 1.375rem;
+  color: white;
+}
+
+/* Users feature icon with blue gradient */
+.users-icon {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+}
+
+/* Posts feature icon with green gradient */
+.posts-icon {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+/* Feature card title styling */
+.feature-title {
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 0.75rem;
+}
+
+/* Feature description text with improved readability */
+.feature-description {
+  color: var(--text-color-light);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+/* Container for feature statistics */
+.feature-stats {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Individual statistic item with icon and text */
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-color-light);
+  font-size: 0.875rem;
+}
+
+/* Icon styling within stat items */
+.stat-item i {
+  color: var(--primary-color);
+}
+
+/* Container for feature action buttons */
+.feature-actions {
+  margin-top: auto;
+}
+
+/* Base styling for feature action buttons */
+.feature-btn {
+  width: 100%;
+  padding: 0.75rem 1.5rem !important;
+  font-weight: 600 !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Users button with blue gradient background */
+.users-btn {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%) !important;
+  border: none !important;
+}
+
+/* Posts button with green gradient background */
+.posts-btn {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+  border: none !important;
+}
+
+/* Hover effects for feature buttons */
+.feature-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-large);
+}
+
+/* ===========================================
+   STATISTICS SECTION
+   =========================================== */
+/* Container for statistics overview */
+.stats-section {
+  margin-top: 1.5rem;
+}
+
+/* Grid layout for statistic cards */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+/* Individual statistic card styling */
+.stat-card {
+  padding: 1.25rem;
+}
+
+/* Content layout within stat cards */
+.stat-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Icon container for statistic cards */
+.stat-icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  background: var(--primary-color);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.125rem;
+}
+
+/* Information area within stat cards */
+.stat-info {
+  flex: 1;
+}
+
+/* Statistic title/label styling */
+.stat-title {
+  font-size: 0.875rem;
+  color: var(--text-color-light);
+  margin: 0 0 0.25rem 0;
+  font-weight: 500;
+}
+
+/* Prominent statistic number display */
+.stat-number {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0;
+}
+
+/* ===========================================
+   RESPONSIVE DESIGN - TABLET
+   =========================================== */
+/* Tablet and small desktop optimizations */
+@media (max-width: 768px) {
+  /* Responsive hero title for tablets */
+  .hero-title {
+    font-size: 1.75rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  /* Single column layout for features on tablets */
+  .features-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Adjusted feature card sizing for tablets */
+  .feature-card {
+    padding: 1.25rem;
+    min-height: 280px;
+  }
+
+  /* Vertical layout for feature stats on small screens */
+  .feature-stats {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  /* Single column layout for stats on tablets */
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  /* Reduced padding for stat cards on tablets */
+  .stat-card {
+    padding: 1rem;
+  }
+}
+
+/* ===========================================
+   RESPONSIVE DESIGN - MOBILE
+   =========================================== */
+/* Mobile phone specific optimizations */
+@media (max-width: 480px) {
+  /* Reduced hero section padding for mobile */
+  .hero-section {
+    padding: 0.75rem 0;
+  }
+
+  /* Smaller hero title for mobile screens */
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  /* Adjusted subtitle size for mobile */
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  /* Compact feature card layout for mobile */
+  .feature-card {
+    padding: 1rem;
+    min-height: 260px;
+  }
+
+  /* Smaller feature icons for mobile */
+  .feature-icon {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.125rem;
+  }
+
+  /* Adjusted feature title size for mobile */
+  .feature-title {
+    font-size: 1.25rem;
+  }
+
+  /* Smaller feature description text for mobile */
+  .feature-description {
+    font-size: 0.875rem;
+  }
+}
+
+/* ===========================================
+   HEIGHT-OPTIMIZED LAYOUT
+   =========================================== */
+/* Optimized layout for screens with adequate height to prevent unnecessary scrolling */
+@media (min-height: 600px) {
+  .home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}

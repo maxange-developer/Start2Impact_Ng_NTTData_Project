@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Start2Impact_Ng_NTTData_Project';
+  title = 'Start2Impact_NTTData_Angular';
 }

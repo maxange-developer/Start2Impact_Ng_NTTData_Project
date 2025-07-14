@@ -1,0 +1,288 @@
+<div class="users-container">
+  <!-- Header Section -->
+  <div class="page-header">
+    <div class="header-content">
+      <div class="title-section">
+        <h1 class="page-title">
+          <i class="pi pi-users"></i>
+          Users Management
+        </h1>
+        <p class="page-subtitle">Manage and organize your users efficiently</p>
+      </div>
+      <div class="header-actions">
+        <button
+          pButton
+          pRipple
+          label="Add User"
+          icon="pi pi-plus"
+          class="add-btn"
+          pTooltip="Aggiungi un nuovo utente"
+          tooltipPosition="bottom"
+          [tooltipOptions]="{ tooltipStyleClass: 'add-tooltip' }"
+          (click)="showAddDialog()"
+        ></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search and Filters -->
+  <div class="filters-section professional-card">
+    <div class="filters-content">
+      <div class="search-box">
+        <span class="p-input-icon-left">
+          <i class="pi pi-search"></i>
+          <input
+            pInputText
+            type="text"
+            placeholder="Search users..."
+            class="search-input"
+            [(ngModel)]="searchTerm"
+            (input)="onSearch()"
+          />
+        </span>
+      </div>
+      <div class="filter-controls">
+        <button
+          pButton
+          pRipple
+          icon="pi pi-refresh"
+          class="p-button-outlined refresh-btn"
+          pTooltip="Aggiorna elenco utenti"
+          tooltipPosition="top"
+          [tooltipOptions]="{ tooltipStyleClass: 'refresh-user-tooltip' }"
+          (click)="refreshUsers()"
+        ></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Users Grid -->
+  <div class="users-grid" *ngIf="users.length > 0">
+    <div class="user-card professional-card" *ngFor="let user of users">
+      <div class="user-header">
+        <div class="user-avatar">
+          <p-avatar
+            [label]="getInitials(user.name)"
+            styleClass="user-avatar-content"
+            [style]="{ 'background-color': getAvatarColor(user.id) }"
+          >
+          </p-avatar>
+        </div>
+        <div class="user-status">
+          <span
+            class="status-badge"
+            [ngClass]="{
+              active: user.status === 'active',
+              inactive: user.status === 'inactive'
+            }"
+          >
+            {{ user.status }}
+          </span>
+        </div>
+      </div>
+
+      <div class="user-info">
+        <h3 class="user-name">{{ user.name }}</h3>
+        <p class="user-email">
+          <i class="pi pi-envelope"></i>
+          {{ user.email }}
+        </p>
+        <p class="user-gender">
+          <i class="pi pi-user"></i>
+          {{ user.gender | titlecase }}
+        </p>
+      </div>
+
+      <div class="user-actions">
+        <button
+          pButton
+          pRipple
+          icon="pi pi-eye"
+          class="p-button-outlined view-btn"
+          size="small"
+          pTooltip="Visualizza dettagli utente"
+          tooltipPosition="top"
+          [tooltipOptions]="{ tooltipStyleClass: 'view-tooltip' }"
+          (click)="viewUser(user)"
+        ></button>
+
+        <button
+          pButton
+          pRipple
+          icon="pi pi-pencil"
+          class="p-button-outlined edit-btn"
+          size="small"
+          pTooltip="Modifica utente"
+          tooltipPosition="top"
+          [tooltipOptions]="{ tooltipStyleClass: 'edit-tooltip' }"
+          (click)="editUser(user)"
+        ></button>
+
+        <button
+          pButton
+          pRipple
+          icon="pi pi-trash"
+          class="p-button-outlined delete-btn"
+          size="small"
+          pTooltip="Elimina utente"
+          tooltipPosition="top"
+          [tooltipOptions]="{ tooltipStyleClass: 'delete-tooltip' }"
+          (click)="deleteUser(user.id)"
+        ></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div
+    class="empty-state professional-card"
+    *ngIf="users.length === 0 && !loading"
+  >
+    <div class="empty-content">
+      <i class="pi pi-users empty-icon"></i>
+      <h3 class="empty-title">No Users Found</h3>
+      <p class="empty-subtitle">
+        Start by adding your first user to the system
+      </p>
+      <button
+        pButton
+        pRipple
+        label="Add First User"
+        icon="pi pi-plus"
+        class="p-button-lg"
+        (click)="showAddDialog()"
+      ></button>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div class="loading-state" *ngIf="loading">
+    <div class="loading-content">
+      <i class="pi pi-spin pi-spinner loading-spinner"></i>
+      <p class="loading-text">Loading users...</p>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <div class="pagination-section" *ngIf="users.length > 0">
+    <p-paginator
+      [rows]="itemsPerPage"
+      [totalRecords]="totalRecords"
+      [first]="(currentPage - 1) * itemsPerPage"
+      (onPageChange)="onPageChange($event)"
+      styleClass="custom-paginator"
+    >
+    </p-paginator>
+  </div>
+
+  <!-- Add/Edit Dialog -->
+  <p-dialog
+    [header]="dialogMode === 'add' ? 'Add New User' : 'Edit User'"
+    [(visible)]="showDialog"
+    [modal]="true"
+    [closable]="true"
+    [style]="{ width: '500px', 'max-width': '90vw' }"
+    styleClass="user-dialog"
+  >
+    <form (ngSubmit)="saveUser()" #userForm="ngForm" class="user-form">
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="name" class="field-label">
+            <i class="pi pi-user"></i>
+            Full Name *
+          </label>
+          <input
+            id="name"
+            pInputText
+            [(ngModel)]="selectedUser.name"
+            name="name"
+            required
+            placeholder="Enter full name"
+            class="form-input"
+          />
+        </div>
+
+        <div class="form-field">
+          <label for="email" class="field-label">
+            <i class="pi pi-envelope"></i>
+            Email Address *
+          </label>
+          <input
+            id="email"
+            pInputText
+            [(ngModel)]="selectedUser.email"
+            name="email"
+            required
+            type="email"
+            placeholder="Enter email address"
+            class="form-input"
+          />
+        </div>
+
+        <div class="form-field">
+          <label for="gender" class="field-label">
+            <i class="pi pi-user"></i>
+            Gender *
+          </label>
+          <p-dropdown
+            [options]="genderOptions"
+            [(ngModel)]="selectedUser.gender"
+            name="gender"
+            required
+            placeholder="Select Gender"
+            optionLabel="label"
+            optionValue="value"
+            class="form-dropdown"
+          >
+          </p-dropdown>
+        </div>
+
+        <div class="form-field">
+          <label for="status" class="field-label">
+            <i class="pi pi-check-circle"></i>
+            Status *
+          </label>
+          <p-dropdown
+            [options]="statusOptions"
+            [(ngModel)]="selectedUser.status"
+            name="status"
+            required
+            placeholder="Select Status"
+            optionLabel="label"
+            optionValue="value"
+            class="form-dropdown"
+          >
+          </p-dropdown>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button
+          pButton
+          pRipple
+          type="button"
+          label="Cancel"
+          icon="pi pi-times"
+          class="p-button-outlined cancel-btn"
+          (click)="hideDialog()"
+        ></button>
+        <button
+          pButton
+          pRipple
+          type="submit"
+          [label]="dialogMode === 'add' ? 'Create User' : 'Update User'"
+          icon="pi pi-save"
+          class="p-button save-btn"
+          [disabled]="userForm.invalid"
+        ></button>
+      </div>
+    </form>
+  </p-dialog>
+</div>
+
+<!-- Toast Messages -->
+<p-toast position="top-right"></p-toast>
+
+<!-- Confirm Dialog -->
+<p-confirmDialog styleClass="confirm-dialog" [style]="{ 'max-width': '90vw' }">
+</p-confirmDialog>

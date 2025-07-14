@@ -1,0 +1,117 @@
+<div class="home-container">
+  <div class="features-section">
+    <div class="features-grid">
+      <div class="feature-card professional-card">
+        <div class="feature-content">
+          <div class="feature-icon users-icon">
+            <i class="pi pi-users"></i>
+          </div>
+          <h3 class="feature-title">Users Management</h3>
+          <p class="feature-description">
+            View, create, edit and manage all users in your system. Complete
+            user profiles with detailed information.
+          </p>
+          <div class="feature-stats">
+            <span class="stat-item">
+              <i class="pi pi-eye"></i>
+              View Users
+            </span>
+            <span class="stat-item">
+              <i class="pi pi-plus"></i>
+              Add New
+            </span>
+          </div>
+        </div>
+        <div class="feature-actions">
+          <button
+            pButton
+            pRipple
+            label="Manage Users"
+            icon="pi pi-arrow-right"
+            class="p-button-lg feature-btn users-btn"
+            routerLink="/main/users"
+            pTooltip="Vai alla gestione utenti"
+            tooltipPosition="top"
+            tooltipStyleClass="view-tooltip"
+          ></button>
+        </div>
+      </div>
+
+      <div class="feature-card professional-card">
+        <div class="feature-content">
+          <div class="feature-icon posts-icon">
+            <i class="pi pi-file-edit"></i>
+          </div>
+          <h3 class="feature-title">Posts Management</h3>
+          <p class="feature-description">
+            Create, edit and organize posts. Manage content with rich text
+            editing and media support.
+          </p>
+          <div class="feature-stats">
+            <span class="stat-item">
+              <i class="pi pi-eye"></i>
+              View Posts
+            </span>
+            <span class="stat-item">
+              <i class="pi pi-pencil"></i>
+              Edit Content
+            </span>
+          </div>
+        </div>
+        <div class="feature-actions">
+          <button
+            pButton
+            pRipple
+            label="Manage Posts"
+            icon="pi pi-arrow-right"
+            class="p-button-lg feature-btn posts-btn"
+            routerLink="/main/posts"
+            pTooltip="Vai alla gestione post"
+            tooltipPosition="top"
+            tooltipStyleClass="edit-tooltip"
+          ></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-card professional-card">
+        <div class="stat-content">
+          <div class="stat-icon">
+            <i class="pi pi-users"></i>
+          </div>
+          <div class="stat-info">
+            <h4 class="stat-title">Total Users</h4>
+            <p class="stat-number">{{ totalUsers || "Loading..." }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="stat-card professional-card">
+        <div class="stat-content">
+          <div class="stat-icon">
+            <i class="pi pi-file"></i>
+          </div>
+          <div class="stat-info">
+            <h4 class="stat-title">Total Posts</h4>
+            <p class="stat-number">{{ totalPosts || "Loading..." }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="stat-card professional-card">
+        <div class="stat-content">
+          <div class="stat-icon">
+            <i class="pi pi-chart-line"></i>
+          </div>
+          <div class="stat-info">
+            <h4 class="stat-title">Activity</h4>
+            <p class="stat-number">High</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

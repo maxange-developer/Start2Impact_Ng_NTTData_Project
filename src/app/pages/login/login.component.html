@@ -1,0 +1,186 @@
+<div class="login-container">
+  <div class="login-card professional-card">
+    <!-- Hero Section -->
+    <div class="login-hero">
+      <div class="app-logo">
+        <h1 class="app-title">UrbanMind</h1>
+      </div>
+      <h2 class="login-title">Welcome Back!</h2>
+      <p class="login-subtitle">
+        Connect with your community and share your thoughts
+      </p>
+    </div>
+
+    <!-- Login Form -->
+    <div class="login-form-section">
+      <div class="form-group">
+        <label for="token" class="form-label">
+          <i class="pi pi-key"></i>
+          GoREST API Token
+        </label>
+        <div class="input-wrapper">
+          <input
+            #tokenInput
+            id="token"
+            type="text"
+            pInputText
+            placeholder="Enter your GoREST token"
+            class="form-input"
+          />
+          <i class="pi pi-lock input-icon"></i>
+        </div>
+        <div class="form-help">
+          <span class="help-text">Don't have a token?</span>
+          <a
+            href="https://gorest.co.in/my-account/access-tokens"
+            target="_blank"
+            class="help-link"
+          >
+            <i class="pi pi-external-link"></i>
+            Get one here
+          </a>
+        </div>
+      </div>
+
+      <button
+        pButton
+        pRipple
+        label="Sign In"
+        icon="pi pi-sign-in"
+        class="login-btn"
+        (click)="login(tokenInput.value)"
+        [disabled]="!tokenInput.value"
+      ></button>
+    </div>
+
+    <!-- Features Preview -->
+    <div class="features-preview">
+      <div class="feature-item">
+        <i class="pi pi-users feature-icon"></i>
+        <span>Manage Users</span>
+      </div>
+      <div class="feature-item">
+        <i class="pi pi-file-edit feature-icon"></i>
+        <span>Create Posts</span>
+      </div>
+      <div class="feature-item">
+        <i class="pi pi-comments feature-icon"></i>
+        <span>Engage Community</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Background Decoration -->
+  <div class="background-decoration">
+    <div class="decoration-circle circle-1"></div>
+    <div class="decoration-circle circle-2"></div>
+    <div class="decoration-circle circle-3"></div>
+  </div>
+</div>
+
+<!-- User Data Dialog -->
+<p-dialog
+  header="Complete Your Profile"
+  [(visible)]="showUserDataDialog"
+  [modal]="true"
+  [closable]="false"
+  [draggable]="false"
+  [resizable]="false"
+  styleClass="user-data-dialog"
+  [style]="{ width: '480px', maxWidth: '90vw' }"
+>
+  <div class="dialog-content">
+    <div class="dialog-header-info">
+      <i class="pi pi-user-plus dialog-icon"></i>
+      <p class="dialog-description">
+        Please provide your information to create your profile
+      </p>
+    </div>
+
+    <form (ngSubmit)="saveUserData()" #userForm="ngForm" class="user-form">
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="name" class="field-label">
+            <i class="pi pi-user"></i>
+            Full Name *
+          </label>
+          <input
+            id="name"
+            name="name"
+            pInputText
+            [(ngModel)]="userData.name"
+            required
+            class="form-input"
+            placeholder="Enter your full name"
+          />
+        </div>
+
+        <div class="form-field">
+          <label for="email" class="field-label">
+            <i class="pi pi-envelope"></i>
+            Email Address *
+          </label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            pInputText
+            [(ngModel)]="userData.email"
+            required
+            email
+            class="form-input"
+            placeholder="your.email@example.com"
+          />
+        </div>
+
+        <div class="form-field">
+          <label for="gender" class="field-label">
+            <i class="pi pi-users"></i>
+            Gender *
+          </label>
+          <p-dropdown
+            id="gender"
+            name="gender"
+            [(ngModel)]="userData.gender"
+            [options]="genderOptions"
+            optionLabel="label"
+            optionValue="value"
+            placeholder="Select gender"
+            class="form-dropdown"
+            required
+          ></p-dropdown>
+        </div>
+
+        <div class="form-field">
+          <label for="status" class="field-label">
+            <i class="pi pi-circle"></i>
+            Status *
+          </label>
+          <p-dropdown
+            id="status"
+            name="status"
+            [(ngModel)]="userData.status"
+            [options]="statusOptions"
+            optionLabel="label"
+            optionValue="value"
+            placeholder="Select status"
+            class="form-dropdown"
+            required
+          ></p-dropdown>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button
+          pButton
+          pRipple
+          type="submit"
+          label="Create Profile"
+          icon="pi pi-check"
+          class="submit-btn"
+          [disabled]="userForm.invalid"
+        ></button>
+      </div>
+    </form>
+  </div>
+</p-dialog>

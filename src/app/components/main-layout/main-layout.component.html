@@ -1,0 +1,45 @@
+<div class="main-layout">
+  <header class="app-header">
+    <div class="header-content">
+      <!-- Logo e titolo -->
+      <div class="logo-section">
+        <h1 class="app-title">UrbanMind</h1>
+      </div>
+
+      <nav class="header-navigation">
+        <div class="nav-buttons">
+          <a
+            *ngFor="let item of menuItems"
+            [routerLink]="item.routerLink"
+            class="nav-button"
+            [class.nav-button-active]="isActiveRoute(item.routerLink!)"
+            routerLinkActive="nav-button-active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <i [class]="item.icon + ' nav-button-icon'"></i>
+            <span class="nav-button-label">{{ item.label }}</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="user-section">
+        <p-button
+          icon="pi pi-sign-out"
+          label="Logout"
+          [outlined]="true"
+          severity="secondary"
+          styleClass="logout-button"
+          (onClick)="logout()"
+        >
+        </p-button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main content -->
+  <main class="app-main">
+    <div class="main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </main>
+</div>

@@ -1,0 +1,657 @@
+/* ===========================================
+   MAIN CONTAINER
+   =========================================== */
+/* Main user detail container with full height and scroll management */
+.user-detail-container {
+  height: 100%;
+  max-width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 1rem;
+}
+
+/* ===========================================
+   LOADING STATE
+   =========================================== */
+/* Loading state container with centered content */
+.loading-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-height: 400px;
+}
+
+/* Wrapper for loading state elements */
+.loading-content {
+  text-align: center;
+}
+
+/* Animated loading spinner with primary color */
+.loading-spinner {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+/* Loading descriptive text */
+.loading-text {
+  color: var(--text-color-light);
+  margin: 0;
+}
+
+/* ===========================================
+   PAGE HEADER SECTION
+   =========================================== */
+/* Header container with back button and title */
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Back button with fixed width to prevent shrinking */
+.back-btn {
+  flex-shrink: 0;
+}
+
+/* Container for header content with space distribution */
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Main page title with icon support */
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Icon styling within page title */
+.page-title i {
+  color: var(--primary-color);
+  font-size: 1.75rem;
+}
+
+/* Edit user button with primary color styling */
+.edit-user-btn {
+  background: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+/* ===========================================
+   USER INFO CARD
+   =========================================== */
+/* Main user information card with generous padding */
+.user-info-card {
+  margin-bottom: 2rem;
+  padding: 2rem;
+}
+
+/* Header section of user info with avatar and details */
+.user-info-header {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Avatar section with centered layout */
+.user-avatar-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Large avatar styling for user detail page */
+::ng-deep .user-avatar-large {
+  width: 120px !important;
+  height: 120px !important;
+  font-size: 2.5rem !important;
+  font-weight: 700 !important;
+  color: white !important;
+}
+
+/* Status badge positioned over avatar */
+.user-status-badge {
+  position: absolute;
+  bottom: 10px;
+  right: -10px;
+}
+
+/* Base styling for status badges */
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Active status badge with green styling */
+.status-badge.active {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+/* Inactive status badge with red styling */
+.status-badge.inactive {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+/* Container for basic user information */
+.user-basic-info {
+  flex: 1;
+}
+
+/* Prominent user name display */
+.user-name {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin: 0 0 1rem 0;
+}
+
+/* Container for user detail items */
+.user-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Individual detail item with icon and text */
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Icon styling for detail items */
+.detail-icon {
+  color: var(--primary-color);
+  font-size: 1rem;
+  width: 20px;
+}
+
+/* Label styling for detail items */
+.detail-label {
+  font-weight: 600;
+  color: var(--text-color);
+  min-width: 80px;
+}
+
+/* Value styling for detail items */
+.detail-value {
+  color: var(--text-color-light);
+}
+
+/* ===========================================
+   USER STATISTICS SECTION
+   =========================================== */
+/* Statistics container with border separator */
+.user-stats {
+  display: flex;
+  gap: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Individual statistic item with centered layout */
+.stat-item {
+  text-align: center;
+  flex: 1;
+}
+
+/* Large statistic value display */
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 0.25rem;
+}
+
+/* Statistic label with uppercase styling */
+.stat-label {
+  font-size: 0.875rem;
+  color: var(--text-color-light);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ===========================================
+   POSTS SECTION
+   =========================================== */
+/* Main posts section container */
+.posts-section {
+  margin-bottom: 2rem;
+}
+
+/* Header for posts section */
+.section-header {
+  margin-bottom: 1.5rem;
+}
+
+/* Section title with icon support */
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Icon styling within section title */
+.section-title i {
+  color: var(--primary-color);
+}
+
+/* Loading state for posts data */
+.posts-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 2rem;
+  color: var(--text-color-light);
+}
+
+/* Container for posts list */
+.posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ===========================================
+   EMPTY STATES
+   =========================================== */
+/* Empty state styling for posts and comments */
+.empty-posts,
+.empty-comments {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: var(--text-color-light);
+}
+
+/* Large icon for empty states */
+.empty-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--text-color-light);
+}
+
+/* Title styling for empty posts state */
+.empty-posts h4 {
+  margin: 0 0 0.5rem 0;
+  color: var(--text-color);
+}
+
+/* Compact empty state for comments */
+.empty-comments {
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* ===========================================
+   POST CARD COMPONENTS
+   =========================================== */
+/* Individual post card container */
+.post-card {
+  padding: 1.5rem;
+}
+
+/* Post header section */
+.post-header {
+  margin-bottom: 1rem;
+}
+
+/* Container for post metadata */
+.post-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Post title with responsive typography */
+.post-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0;
+  line-height: 1.3;
+}
+
+/* Container for post information items */
+.post-info {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.875rem;
+  color: var(--text-color-light);
+}
+
+/* Individual post info items with icon support */
+.post-date,
+.post-id {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* Container for post body content */
+.post-content {
+  margin-bottom: 1.5rem;
+}
+
+/* Post body text with improved readability */
+.post-body {
+  color: var(--text-color-light);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Container for post action buttons */
+.post-actions {
+  display: flex;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Active state for comments toggle button */
+.comments-btn.active {
+  background: #3b82f6 !important;
+  border-color: #3b82f6 !important;
+  color: white !important;
+}
+
+/* Add comment button styling */
+.add-comment-btn {
+  color: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+/* ===========================================
+   COMMENTS SECTION
+   =========================================== */
+/* Main comments section container */
+.comments-section {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Loading state for comments data */
+.comments-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  color: var(--text-color-light);
+}
+
+/* Container for comments list */
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Individual comment item styling */
+.comment-item {
+  padding: 1rem;
+  background: var(--surface-100);
+  border-radius: 8px;
+  border-left: 3px solid #3b82f6;
+}
+
+/* Comment header section */
+.comment-header {
+  margin-bottom: 0.75rem;
+}
+
+/* Comment author information container */
+.comment-author {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Author information layout */
+.author-info {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Author name styling */
+.author-name {
+  font-weight: 600;
+  color: var(--text-color);
+  font-size: 0.875rem;
+}
+
+/* Author email styling */
+.author-email {
+  font-size: 0.75rem;
+  color: var(--text-color-light);
+}
+
+/* Comment body container with indentation */
+.comment-body {
+  margin-left: 2.5rem;
+}
+
+/* Comment body text styling */
+.comment-body p {
+  margin: 0;
+  color: var(--text-color-light);
+  line-height: 1.5;
+}
+
+/* ===========================================
+   COMMENT FORM
+   =========================================== */
+/* Comment form section container */
+.comment-form-section {
+  margin-top: 1rem;
+}
+
+/* Comment form with highlighted background */
+.comment-form {
+  padding: 1.5rem;
+  background: var(--surface-50);
+  border-radius: 8px;
+  border: 1px dashed var(--primary-color);
+}
+
+/* Form title with icon support */
+.form-title {
+  margin: 0 0 1.5rem 0;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Icon styling within form title */
+.form-title i {
+  color: var(--primary-color);
+}
+
+/* Grid layout for form fields */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Individual form field container */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Form field label with icon support */
+.field-label {
+  font-weight: 600;
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* Icon styling within field labels */
+.field-label i {
+  color: var(--primary-color);
+}
+
+/* Base styling for form inputs and textareas */
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.75rem !important;
+  border-radius: 6px !important;
+  border: 1px solid var(--border-color) !important;
+  font-size: 0.875rem !important;
+  transition: border-color 0.2s ease !important;
+}
+
+/* Focus state for form inputs and textareas */
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 0 0 1px var(--primary-color) !important;
+}
+
+/* Container for form action buttons */
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
+/* Cancel button with neutral styling */
+.cancel-btn {
+  color: var(--text-color-light) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Submit button with primary color styling */
+.submit-btn {
+  background: var(--primary-color) !important;
+  border-color: var(--primary-color) !important;
+}
+
+/* ===========================================
+   RESPONSIVE DESIGN - TABLET
+   =========================================== */
+/* Tablet and small desktop optimizations */
+@media (max-width: 768px) {
+  /* Reduced container padding for tablets */
+  .user-detail-container {
+    padding: 0.5rem;
+  }
+
+  /* Stack header elements vertically on tablets */
+  .detail-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  /* Stack header content vertically on tablets */
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  /* Reduced page title size for tablets */
+  .page-title {
+    font-size: 1.5rem;
+  }
+
+  /* Stack user info header vertically on tablets */
+  .user-info-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* Maintain horizontal layout for stats on tablets */
+  .user-stats {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  /* Single column form grid on tablets */
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Stack post actions vertically on tablets */
+  .post-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  /* Stack form actions vertically on tablets */
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+
+  /* Full width buttons on tablets */
+  .form-actions button {
+    width: 100%;
+  }
+}
+
+/* ===========================================
+   RESPONSIVE DESIGN - MOBILE
+   =========================================== */
+/* Mobile phone specific optimizations */
+@media (max-width: 480px) {
+  /* Stack user stats vertically on mobile */
+  .user-stats {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* Smaller stat values on mobile */
+  .stat-value {
+    font-size: 1.5rem;
+  }
+
+  /* Remove comment body indentation on mobile */
+  .comment-body {
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+
+  /* Stack comment author info vertically on mobile */
+  .comment-author {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
