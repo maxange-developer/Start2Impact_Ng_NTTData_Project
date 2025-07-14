@@ -817,7 +817,7 @@ Questo progetto è sviluppato per scopi educativi come parte del percorso **Star
 
 ## 👥 Autore
 
-Sviluppato da **maxange-developer** per il progetto Start2Impact NTTData.
+Sviluppato da **Massimiliano Angelone** per il progetto Start2Impact NTTData.
 
 ---
 
