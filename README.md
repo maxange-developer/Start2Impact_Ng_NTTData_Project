@@ -1,6 +1,6 @@
 # UrbanMind - Start2Impact NTTData Project
 
-Applicazione Angular full-stack per la gestione di utenti, post e commenti utilizzando l'API GoREST. Questo progetto è stato sviluppato come parte del percorso **Start2Impact x NTTData**.
+Applicazione Angular per la gestione di utenti, post e commenti utilizzando l'API GoREST. Questo progetto è stato sviluppato come parte del percorso **Start2Impact x NTTData**.
 
 ![Angular](https://img.shields.io/badge/Angular-17.3.12-red?style=flat&logo=angular)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.4.2-blue?style=flat&logo=typescript)
